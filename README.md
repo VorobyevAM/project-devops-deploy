@@ -21,7 +21,7 @@ Keep this structure in mind when running commands—backend tooling (`gradlew`, 
 Key variables are read directly by Spring Boot (see `src/main/resources/application.yml` and `application-prod.yml` for defaults):
 
 | Variable                     | Description                                                   | Default                                      |
-|------------------------------|---------------------------------------------------------------|----------------------------------------------|
+| ---------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
 | `SPRING_PROFILES_ACTIVE`     | Active Spring profile (`dev`, `prod`, etc.)                   | `dev`                                        |
 | `SPRING_DATASOURCE_URL`      | JDBC URL for PostgreSQL in `prod`                             | `jdbc:postgresql://localhost:5432/bulletins` |
 | `SPRING_DATASOURCE_USERNAME` | DB username                                                   | `postgres`                                   |
