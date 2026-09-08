@@ -45,6 +45,30 @@ All other variables supported by Spring Boot can be overridden the same way; che
 - Make.
 - NodeJS 20+
 
+## Container image
+
+The application image is built by the multi-stage [`Dockerfile`](./Dockerfile):
+Vite assets are compiled first, then included in the Spring Boot executable JAR.
+
+Build and test the image locally:
+
+```bash
+make docker-build TAG=2.0.2
+docker run --rm -p 8080:8080 -p 9090:9090 \
+  ghcr.io/vorobyevam/project-devops-deploy:2.0.2
+```
+
+Publish manually to GHCR:
+
+```bash
+echo "$GITHUB_TOKEN" | docker login ghcr.io -u VorobyevAM --password-stdin
+make docker-publish TAG=2.0.2
+```
+
+Tags matching `v*.*.*` also run
+[`publish-image.yml`](./.github/workflows/publish-image.yml), which tests the
+application and publishes immutable semantic-version tags plus `latest`.
+
 ## Running
 
 ### Backend (local dev profile)
